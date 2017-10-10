@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mongoose Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to Platypus Dashboard</h1>
+    <% if(typeof(errors) != 'undefined' ) { %>
+        <% for (var x in errors) { %>
+            <% if(typeof(errors[x]) != 'undefined') { %>
+                <h3><%= errors[x].errors %></h3>
+            <% } %>
+        <% } %>
+    <% } %>
+    <% if(typeof(Platypuses) != 'undefined') { %>
+        <% for (x in Platypuses) { %>
+            <h3>Platypus <%= Number(x) + 1 %> </h3>
+            <h3><%= Platypuses[x].name %></h3>
+            <h3><%= Platypuses[x].age %></h3>
+            <h3><%= Platypuses[x].height %></h3>
+            <h3><%= Platypuses[x].updatedAt %></h3>
+            <a href=/edit/<%= Platypuses[x]._id %> >Edit</a>
+            <a href=/destroy/<%= Platypuses[x]._id %> >Delete</a>
+        <% } %>
+    <% } %>
+    <form action='/platypus' method='get'>
+        <input type='submit' value="New Platypus">
+    </form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New Platypus</title>
+</head>
+<body>
+    <% if(typeof(errors) != 'undefined' ) { %>
+            <h3><%= errors %></h3>
+    <% } %>
+    <h1>Make a new Platypus</h1>
+    <% if (typeof(platypus) != 'undefined' ) { %>
+        <form action='/platypus/update/<%=platypus[0].id%>' method='post'>
+            Name: <input type='text' name='name' value=<%=platypus[0].name%>><br>
+            Age: <input type='text' name='age' value=<%=platypus[0].age%>><br>
+            Height: <input type='text' name='height' value=<%=platypus[0].height%>><br>
+            <input type='submit' value="Add">
+        </form>
+    <% } else { %>
+        <form action='/platypus/new' method='post'>
+            Name: <input type='text' name='name'><br>
+            Age: <input type='text' name='age'><br>
+            Height: <input type='text' name='height'><br>
+            <input type='submit' value="Add">
+        </form>
+    <% } %>
+</body>
+</html>
